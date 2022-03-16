@@ -15,10 +15,20 @@ std::shared_ptr<Client> Server::add_client(std::string id)
 
             // adding 4-digit random integer to the end of client's id
             id += std::to_string(random_number);
+            break;
         }
 
-    std::shared_ptr<Client> client{std::make_shared<Client>(id, *this)};
-    clients[client] = 5.0;
+    std::shared_ptr<Client> ptr_client{std::make_shared<Client>(id, *this)};
+    clients[ptr_client] = 5.0;
 
-    return client;
+    return ptr_client;
+}
+
+std::shared_ptr<Client> Server::get_client(std::string id) const
+{
+    for (const auto &[ptr_client, money] : clients)
+        if (ptr_client->get_id() == id)
+            return ptr_client;
+
+    return std::shared_ptr<Client>{};
 }

@@ -10,14 +10,15 @@ TEST(HW1Test, TEST1)
     auto bryan{server.add_client("bryan")};
     EXPECT_EQ(bryan->get_id(), "bryan");
 }
-/*
-TEST(HW1Test, TEST2) {
+
+TEST(HW1Test, TEST2)
+{
     Server server{};
     auto bryan{server.add_client("bryan")};
     auto bryan_from_server{server.get_client("bryan")};
     EXPECT_EQ(bryan.get(), bryan_from_server.get());
 }
-
+/*
 TEST(HW1Test, TEST3) {
     Server server{};
     auto bryan{server.add_client("bryan")};
