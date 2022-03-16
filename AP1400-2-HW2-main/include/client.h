@@ -20,7 +20,7 @@ public:
     // public_key and private_key are set in constructor
     std::string get_publickey() const { return public_key; };
 
-    double &get_wallet() const;
+    double get_wallet() const;
 
     std::string sign(std::string txt) const;
     bool transfer_money(std::string receiver, double value) const;

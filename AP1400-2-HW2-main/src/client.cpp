@@ -9,7 +9,7 @@ Client::Client(std::string id, const Server &server) : id{id}, server{&server}
     crypto::generate_key(public_key, private_key);
 }
 
-double &Client::get_wallet() const
+double Client::get_wallet() const
 {
     return server->get_wallet(id);
 }
