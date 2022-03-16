@@ -32,13 +32,13 @@ public:
 
     // Using this function will return the wallet
     // value of the client with username id
-    double get_wallet(std::string id);
+    double &get_wallet(std::string id) const;
 
     /*****************************************************************************************************/
-    static bool parse_trx(std::string trx, std::string sender, std::string receiver, double value);
+    static bool parse_trx(std::string trx, std::string &sender, std::string &receiver, double &value);
     /*****************************************************************************************************/
 
-    bool add_pending_trx(std::string trx, std::string signature);
+    bool add_pending_trx(std::string trx, std::string signature) const;
 
     size_t mine();
 
@@ -49,7 +49,7 @@ public:
 private:
     /*****************************************************************************************************/
     // This member variable will map each client to its wallet
-    std::map<std::shared_ptr<Client>, double> clients;
+    mutable std::map<std::shared_ptr<Client>, double> clients;
     /*****************************************************************************************************/
 };
 
