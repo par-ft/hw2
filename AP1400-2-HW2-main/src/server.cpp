@@ -84,22 +84,13 @@ bool Server::add_pending_trx(std::string trx, std::string signature) const
     double value{};
 
     if (!parse_trx(trx, sender, receiver, value))
-    {
-        std::cout << "false1\n";
         return false;
-    }
 
     if (get_client(sender) == nullptr || get_client(receiver) == nullptr || get_wallet(sender) < value)
-    {
-        std::cout << "false2\n";
         return false;
-    }
 
     if (!crypto::verifySignature(get_client(sender)->get_publickey(), trx, signature))
-    {
-        std::cout << "false3\n";
         return false;
-    }
 
     pending_trxs.push_back(trx);
     return true;
